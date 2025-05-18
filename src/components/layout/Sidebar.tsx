@@ -6,7 +6,8 @@ import {
   MessageSquare, 
   BarChart3,
   PlusCircle,
-  Search
+  Search,
+  Bot
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -85,10 +86,10 @@ const Sidebar = () => {
               label="Profil"
               icon={<User className="h-5 w-5" />}
               isActive={pathname === '/profile'}
-            />                   <NavItem
+            />              <NavItem
               href="/chatbot"
               label="Ask Coride"
-              icon={<MessageSquare className="h-5 w-5" />}
+              icon={<Bot className="h-5 w-5" />}
               isActive={pathname === '/chatbot'}
             />
           </div>

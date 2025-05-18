@@ -6,7 +6,8 @@ import {
   MessageSquare, 
   BarChart3,
   PlusCircle,
-  Search
+  Search,
+  Bot
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -108,6 +109,11 @@ const MobileSidebar = ({ onNavigate }: MobileSidebarProps) => {
               isActive={pathname === '/profile'}
               onClick={onNavigate}
             />
+              <NavItem              href="/chatbot"
+              label="Ask Coride"
+              icon={<Bot className="h-5 w-5" />}
+              isActive={pathname === '/chatbot'}
+                        />
           </div>
         </div>
 
