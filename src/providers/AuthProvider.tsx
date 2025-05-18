@@ -39,7 +39,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setIsLoading(false);
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, _password: string) => {
     // Simulate API call and authentication
     setIsLoading(true);
     try {
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  const register = async (email: string, name: string, password: string, location: string) => {
+  const register = async (email: string, name: string, _password: string, location: string) => {
     // Simulate API call and registration
     setIsLoading(true);
     try {

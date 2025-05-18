@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Bell, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logo from '@/assets/sharemob.png';
 import {
@@ -12,10 +12,8 @@ import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import UserMenu from '@/components/layout/UserMenu';
 import NotificationsPopover from '@/components/notifications/NotificationsPopover';
 import MobileSidebar from '@/components/layout/MobileSidebar';
-import { useNotifications } from '@/providers/NotificationsProvider';
 
 const Navbar = () => {
-  const { unreadCount } = useNotifications();
   const [open, setOpen] = useState(false);
 
   return (

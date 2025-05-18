@@ -124,22 +124,4 @@ const Sidebar = () => {
   );
 };
 
-const MobileSidebar = ({ onNavigate }: { onNavigate: () => void }) => {
-  return (
-    <div className="flex h-full flex-col py-4">
-      <div className="px-4 py-2">
-        <h2 className="text-lg font-semibold">Menu principal</h2>
-      </div>
-      <div className="mt-auto p-4">
-        <div className="rounded-lg bg-primary/10 p-3">
-          <h3 className="font-medium text-sm">Réduisez votre impact</h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            Partagez vos trajets et contribuez au développement durable.
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default Sidebar;

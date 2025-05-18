@@ -2,11 +2,8 @@ import { Outlet } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
 import Navbar from '@/components/layout/Navbar';
 import Sidebar from '@/components/layout/Sidebar';
-import { useAuth } from '@/providers/AuthProvider';
 
 const AppLayout = () => {
-  const { user } = useAuth();
-
   return (
     <div className="flex h-screen flex-col">
       <Navbar />

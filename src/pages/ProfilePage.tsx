@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ export default function ProfilePage() {
                 <UserCircle className="h-24 w-24" />
               </Avatar>
               <div className="text-center">
-                <h2 className="text-2xl font-bold">Ali</h2>
+                <h2 className="text-2xl font-bold">John Doe</h2>
                 <p className="text-muted-foreground">Membre depuis 2024</p>
               </div>
               <Button>Modifier le profil</Button>
