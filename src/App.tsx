@@ -15,6 +15,7 @@ import AdminDashboardPage from '@/pages/admin/AdminDashboardPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 import AuthProvider from '@/providers/AuthProvider';
 import { NotificationsProvider } from '@/providers/NotificationsProvider';
+import Chatbot from './pages/AI/Chatbot';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/messages" element={<MessagingPage />} />
                   <Route path="/admin" element={<AdminDashboardPage />} />
+                  <Route path="/chatbot" element={<Chatbot />} />
+  
+
                 </Route>
               </Route>
               <Route path="*" element={<NotFoundPage />} />

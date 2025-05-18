@@ -17,10 +17,10 @@ export default function ProfilePage() {
                 <UserCircle className="h-24 w-24" />
               </Avatar>
               <div className="text-center">
-                <h2 className="text-2xl font-bold">John Doe</h2>
-                <p className="text-muted-foreground">Member since 2024</p>
+                <h2 className="text-2xl font-bold">Ali</h2>
+                <p className="text-muted-foreground">Membre depuis 2024</p>
               </div>
-              <Button>Edit Profile</Button>
+              <Button>Modifier le profil</Button>
             </div>
           </CardContent>
         </Card>
@@ -28,32 +28,32 @@ export default function ProfilePage() {
         {/* Profile Details */}
         <Tabs defaultValue="info" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="info">Information</TabsTrigger>
-            <TabsTrigger value="rides">Ride History</TabsTrigger>
-            <TabsTrigger value="reviews">Reviews</TabsTrigger>
+            <TabsTrigger value="info">Informations</TabsTrigger>
+            <TabsTrigger value="rides">Historique des trajets</TabsTrigger>
+            <TabsTrigger value="reviews">Avis</TabsTrigger>
           </TabsList>
           
           <TabsContent value="info">
             <Card>
               <CardHeader>
-                <CardTitle>Personal Information</CardTitle>
+                <CardTitle>Informations personnelles</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-4">
                   <Mail className="h-5 w-5 text-muted-foreground" />
-                  <span>john.doe@example.com</span>
+                  <span>ali@example.com</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone className="h-5 w-5 text-muted-foreground" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+212 606060606</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <MapPin className="h-5 w-5 text-muted-foreground" />
-                  <span>San Francisco, CA</span>
+                  <span>California, Casablanca</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Calendar className="h-5 w-5 text-muted-foreground" />
-                  <span>Joined January 2024</span>
+                  <span>Inscription en janvier 2024</span>
                 </div>
               </CardContent>
             </Card>
@@ -62,10 +62,10 @@ export default function ProfilePage() {
           <TabsContent value="rides">
             <Card>
               <CardHeader>
-                <CardTitle>Recent Rides</CardTitle>
+                <CardTitle>Trajets récents</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">No rides to display</p>
+                <p className="text-muted-foreground">Aucun trajet à afficher</p>
               </CardContent>
             </Card>
           </TabsContent>
@@ -73,10 +73,10 @@ export default function ProfilePage() {
           <TabsContent value="reviews">
             <Card>
               <CardHeader>
-                <CardTitle>User Reviews</CardTitle>
+                <CardTitle>Avis des utilisateurs</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">No reviews yet</p>
+                <p className="text-muted-foreground">Aucun avis pour le moment</p>
               </CardContent>
             </Card>
           </TabsContent>

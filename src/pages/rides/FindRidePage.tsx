@@ -11,7 +11,6 @@ import {
   Users,
   ChevronLeft,
   RefreshCw,
-  UserCircle,
   ArrowRight,
   MessageSquare
 } from 'lucide-react';
@@ -22,7 +21,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -34,13 +32,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
-} from '@/components/ui/select';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useAuth } from '@/providers/AuthProvider';
@@ -49,7 +40,7 @@ import { Ride, User } from '@/types';
 
 const searchSchema = z.object({
   startLocation: z.string().optional(),
-  endLocation: z.string().min(2, 'Destination is required'),
+  endLocation: z.string().min(2, 'La destination est requise'),
   time: z.string().optional(),
 });
 
@@ -98,14 +89,14 @@ const FindRidePage = () => {
       setSearchResults(filteredRides);
       
       if (filteredRides.length === 0) {
-        toast.info('No rides found', {
-          description: 'Try adjusting your search criteria.',
+        toast.info('Aucun trajet trouvé', {
+          description: 'Essayez de modifier vos critères de recherche.',
         });
       }
     } catch (error) {
       console.error(error);
-      toast.error('Search failed', {
-        description: 'Please try again later.',
+      toast.error('Échec de la recherche', {
+        description: 'Veuillez réessayer plus tard.',
       });
     } finally {
       setIsSearching(false);
@@ -113,14 +104,14 @@ const FindRidePage = () => {
   };
   
   const handleRequestRide = (ride: Ride) => {
-    toast.success('Ride request sent', {
-      description: `Your request to join ${ride.driver.name}'s ride has been sent.`,
+    toast.success('Demande de trajet envoyée', {
+      description: `Votre demande pour rejoindre le trajet de ${ride.driver.name} a été envoyée.`,
     });
   };
   
   const handleChatWithDriver = (driver: User) => {
-    toast('Chat initiated', {
-      description: `You can now message ${driver.name}.`,
+    toast('Chat initié', {
+      description: `Vous pouvez maintenant envoyer un message à ${driver.name}.`,
     });
     navigate('/messages');
   };
@@ -136,17 +127,17 @@ const FindRidePage = () => {
         >
           <ChevronLeft className="h-4 w-4" />
         </Button>
-        <h1 className="text-3xl font-bold tracking-tight">Find a Ride</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Rechercher un trajet</h1>
       </div>
       
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Search className="h-5 w-5 text-primary" />
-            Search for Rides
+            Recherche de trajets
           </CardTitle>
           <CardDescription>
-            Enter your destination and preferences to find available rides
+            Entrez votre destination et vos préférences pour trouver des trajets disponibles
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -158,12 +149,12 @@ const FindRidePage = () => {
                   name="startLocation"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Starting Area (Optional)</FormLabel>
+                      <FormLabel>Zone de départ (Optionnel)</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <MapPin className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                           <Input 
-                            placeholder="Your location" 
+                            placeholder="Votre localisation" 
                             className="pl-9" 
                             {...field} 
                           />
@@ -184,7 +175,7 @@ const FindRidePage = () => {
                         <div className="relative">
                           <MapPin className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                           <Input 
-                            placeholder="Where are you going?" 
+                            placeholder="Où allez-vous ?" 
                             className="pl-9" 
                             {...field} 
                           />
@@ -201,7 +192,7 @@ const FindRidePage = () => {
                 name="time"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Preferred Departure Time (Optional)</FormLabel>
+                    <FormLabel>Heure de départ souhaitée (Optionnel)</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Clock className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -225,10 +216,10 @@ const FindRidePage = () => {
                 {isSearching ? (
                   <>
                     <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-                    Searching Rides...
+                    Recherche de trajets...
                   </>
                 ) : (
-                  'Search Rides'
+                  'Rechercher des trajets'
                 )}
               </Button>
             </form>
@@ -239,7 +230,7 @@ const FindRidePage = () => {
       {/* Search Results */}
       {isSearching && (
         <div className="max-w-2xl mx-auto space-y-4">
-          <h2 className="text-xl font-semibold">Searching for rides...</h2>
+          <h2 className="text-xl font-semibold">Recherche de trajets...</h2>
           {[1, 2, 3].map((i) => (
             <Card key={i}>
               <CardContent className="pt-6">
@@ -261,8 +252,8 @@ const FindRidePage = () => {
         <div className="max-w-2xl mx-auto space-y-4">
           <h2 className="text-xl font-semibold">
             {searchResults.length} 
-            {searchResults.length === 1 ? ' ride ' : ' rides '} 
-            found
+            {searchResults.length === 1 ? ' trajet ' : ' trajets '} 
+            trouvé{searchResults.length === 1 ? '' : 's'}
           </h2>
           
           {searchResults.length > 0 ? (
@@ -284,12 +275,12 @@ const FindRidePage = () => {
                       <div className="flex-1 space-y-3">
                         <div className="flex items-center gap-6">
                           <div className="space-y-1">
-                            <p className="text-xs text-muted-foreground">From</p>
+                            <p className="text-xs text-muted-foreground">De</p>
                             <p className="font-medium">{ride.startLocation}</p>
                           </div>
                           <ArrowRight className="h-4 w-4 text-muted-foreground" />
                           <div className="space-y-1">
-                            <p className="text-xs text-muted-foreground">To</p>
+                            <p className="text-xs text-muted-foreground">À</p>
                             <p className="font-medium">{ride.endLocation}</p>
                           </div>
                         </div>
@@ -301,14 +292,23 @@ const FindRidePage = () => {
                           </div>
                           <div className="flex items-center">
                             <Users className="mr-1 h-4 w-4 text-muted-foreground" />
-                            <span>{ride.availableSeats} seats available</span>
+                            <span>{ride.availableSeats} places disponibles</span>
                           </div>
                           <div className="flex items-center">
                             <Calendar className="mr-1 h-4 w-4 text-muted-foreground" />
                             <span>
                               {ride.recurrence === 'recurring'
-                                ? `${ride.recurringDays.map(d => d.charAt(0).toUpperCase() + d.slice(1, 3)).join(', ')}`
-                                : 'One-time'}
+                                ? `${ride.recurringDays.map(d => {
+                                    const days = {
+                                      monday: 'Lun',
+                                      tuesday: 'Mar',
+                                      wednesday: 'Mer',
+                                      thursday: 'Jeu',
+                                      friday: 'Ven'
+                                    };
+                                    return days[d] || d;
+                                  }).join(', ')}`
+                                : 'Trajet unique'}
                             </span>
                           </div>
                         </div>
@@ -321,7 +321,7 @@ const FindRidePage = () => {
                         
                         <div className="flex flex-wrap gap-2 pt-2">
                           <Button onClick={() => handleRequestRide(ride)}>
-                            Request Ride
+                            Demander le trajet
                           </Button>
                           <Button variant="outline" onClick={() => handleChatWithDriver(ride.driver)}>
                             <MessageSquare className="mr-2 h-4 w-4" />
@@ -338,10 +338,10 @@ const FindRidePage = () => {
             <Card>
               <CardContent className="pt-6 text-center py-12">
                 <p className="text-muted-foreground mb-4">
-                  No rides found matching your criteria.
+                  Aucun trajet ne correspond à vos critères.
                 </p>
                 <Button onClick={() => form.reset()}>
-                  Modify Search
+                  Modifier la recherche
                 </Button>
               </CardContent>
             </Card>

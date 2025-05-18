@@ -61,19 +61,19 @@ const MobileSidebar = ({ onNavigate }: MobileSidebarProps) => {
       <div className="flex flex-col flex-1 gap-2 p-4">
         <div className="py-2">
           <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-            Main
+            Principal
           </h2>
           <div className="space-y-1">
             <NavItem
               href="/"
-              label="Dashboard"
+              label="Tableau de bord"
               icon={<Home className="h-5 w-5" />}
               isActive={pathname === '/'}
               onClick={onNavigate}
             />
             <NavItem
               href="/rides"
-              label="My Rides"
+              label="Mes trajets"
               icon={<Car className="h-5 w-5" />}
               isActive={pathname.startsWith('/rides') && 
                 !pathname.includes('/offer') && 
@@ -82,14 +82,14 @@ const MobileSidebar = ({ onNavigate }: MobileSidebarProps) => {
             />
             <NavItem
               href="/rides/offer"
-              label="Offer Ride"
+              label="Proposer un trajet"
               icon={<PlusCircle className="h-5 w-5" />}
               isActive={pathname === '/rides/offer'}
               onClick={onNavigate}
             />
             <NavItem
               href="/rides/find"
-              label="Find Ride"
+              label="Rechercher un trajet"
               icon={<Search className="h-5 w-5" />}
               isActive={pathname === '/rides/find'}
               onClick={onNavigate}
@@ -103,7 +103,7 @@ const MobileSidebar = ({ onNavigate }: MobileSidebarProps) => {
             />
             <NavItem
               href="/profile"
-              label="Profile"
+              label="Mon profil"
               icon={<User className="h-5 w-5" />}
               isActive={pathname === '/profile'}
               onClick={onNavigate}
@@ -114,12 +114,12 @@ const MobileSidebar = ({ onNavigate }: MobileSidebarProps) => {
         {user?.role === 'admin' && (
           <div className="py-2">
             <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-              Admin
+              Administration
             </h2>
             <div className="space-y-1">
               <NavItem
                 href="/admin"
-                label="RSE Dashboard"
+                label="Tableau RSE"
                 icon={<BarChart3 className="h-5 w-5" />}
                 isActive={pathname === '/admin'}
                 onClick={onNavigate}
@@ -131,9 +131,9 @@ const MobileSidebar = ({ onNavigate }: MobileSidebarProps) => {
 
       <div className="mt-auto p-4">
         <div className="rounded-lg bg-primary/10 p-3">
-          <h3 className="font-medium text-sm">Reduce Your Carbon Footprint</h3>
+          <h3 className="font-medium text-sm">Réduisez votre empreinte carbone</h3>
           <p className="text-xs text-muted-foreground mt-1">
-            Share rides with colleagues and help your organization meet sustainability goals.
+            Partagez vos trajets avec vos collègues et aidez votre organisation à atteindre ses objectifs de développement durable.
           </p>
         </div>
       </div>

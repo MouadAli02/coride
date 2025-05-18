@@ -18,8 +18,8 @@ import {
 import { useAuth } from '@/providers/AuthProvider';
 
 const loginSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  email: z.string().email('Veuillez saisir une adresse e-mail valide'),
+  password: z.string().min(6, 'Le mot de passe doit contenir au moins 6 caractères'),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -41,10 +41,10 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       await login(data.email, data.password);
-      toast.success('Welcome back!');
+      toast.success('Bienvenue !');
       navigate('/');
     } catch (error) {
-      toast.error('Invalid email or password');
+      toast.error('E-mail ou mot de passe invalide');
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -77,17 +77,17 @@ const LoginPage = () => {
             </div>
           </div>
           <CardDescription>
-            Enter your email and password to sign in
+            Entrez votre e-mail et mot de passe pour vous connecter
           </CardDescription>
         </CardHeader>
         <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder="votre@email.com"
                 {...register('email')}
                 autoComplete="email"
               />
@@ -97,9 +97,9 @@ const LoginPage = () => {
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Mot de passe</Label>
                 <Button variant="link" className="h-auto p-0" asChild>
-                  <Link to="/forgot-password">Forgot password?</Link>
+                  <Link to="/forgot-password">Mot de passe oublié ?</Link>
                 </Button>
               </div>
               <Input
@@ -119,7 +119,7 @@ const LoginPage = () => {
               className="w-full text-sm text-muted-foreground"
               onClick={fillDemoCredentials}
             >
-              Use demo credentials
+              Utiliser les identifiants de démonstration
             </Button>
           </CardContent>
           <CardFooter className="flex flex-col space-y-3">
@@ -128,12 +128,12 @@ const LoginPage = () => {
               className="w-full" 
               disabled={isLoading}
             >
-              {isLoading ? 'Signing in...' : 'Sign In'}
+              {isLoading ? 'Connexion en cours...' : 'Se connecter'}
             </Button>
             <div className="text-center text-sm">
-              Don't have an account?{' '}
+              Vous n'avez pas de compte ?{' '}
               <Link to="/register" className="text-primary hover:underline">
-                Sign up
+                S'inscrire
               </Link>
             </div>
           </CardFooter>

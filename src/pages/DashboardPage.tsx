@@ -36,10 +36,10 @@ const DashboardPage = () => {
   // Show toast notification on component mount (demo purposes)
   useEffect(() => {
     const timer = setTimeout(() => {
-      toast.info('New ride match!', {
-        description: 'A colleague from your area has just posted a ride.',
+      toast.info('Nouvelle correspondance de trajet !', {
+        description: 'Un collègue de votre région vient de publier un trajet.',
         action: {
-          label: 'View',
+          label: 'Voir',
           onClick: () => {},
         },
       });
@@ -51,44 +51,44 @@ const DashboardPage = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Tableau de bord</h1>
         <p className="text-muted-foreground">
-          Welcome back, {user?.name}! Here's what's happening with your rides.
+          Bienvenue, {user?.name} ! Voici ce qui se passe avec vos trajets.
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <StatCard
-          title="Your Active Rides"
+          title="Vos trajets actifs"
           value={userRides.length}
-          description="As driver"
+          description="En tant que conducteur"
           icon={<Car className="h-4 w-4" />}
         />
         <StatCard
-          title="Ride Requests"
+          title="Demandes de trajet"
           value={userRequests.length}
-          description="Pending actions"
+          description="Actions en attente"
           icon={<Bell className="h-4 w-4" />}
         />
         <StatCard
-          title="CO₂ Saved"
+          title="CO₂ économisé"
           value="35 kg"
-          description="This month"
+          description="Ce mois-ci"
           icon={<Leaf className="h-4 w-4" />}
           trend={{ value: 12, positive: true }}
         />
         <StatCard
-          title="Total Participants"
+          title="Participants"
           value="43"
-          description="In your organization"
+          description="Dans votre organisation"
           icon={<Users className="h-4 w-4" />}
         />
       </div>
 
       <Tabs defaultValue="upcoming" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="upcoming">Upcoming Rides</TabsTrigger>
-          <TabsTrigger value="requests">Ride Requests</TabsTrigger>
+          <TabsTrigger value="upcoming">Trajets à venir</TabsTrigger>
+          <TabsTrigger value="requests">Demandes de trajet</TabsTrigger>
         </TabsList>
         <TabsContent value="upcoming" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
@@ -98,24 +98,24 @@ const DashboardPage = () => {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base font-medium flex items-center">
                       <MapPin className="h-4 w-4 mr-2 text-primary" />
-                      {ride.startLocation} to {ride.endLocation}
+                      {ride.startLocation} vers {ride.endLocation}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-sm space-y-2">
                       <div className="flex items-center text-muted-foreground">
                         <Clock className="h-4 w-4 mr-2" />
-                        Departure at {ride.departureTime}
+                        Départ à {ride.departureTime}
                       </div>
                       <div className="flex items-center text-muted-foreground">
                         <Calendar className="h-4 w-4 mr-2" />
                         {ride.recurrence === 'recurring'
-                          ? `Recurring: ${ride.recurringDays.map(d => d.charAt(0).toUpperCase() + d.slice(1)).join(', ')}`
-                          : 'One-time ride'}
+                          ? `Récurrent : ${ride.recurringDays.map(d => d.charAt(0).toUpperCase() + d.slice(1)).join(', ')}`
+                          : 'Trajet unique'}
                       </div>
                       <div className="flex items-center text-muted-foreground">
                         <Users className="h-4 w-4 mr-2" />
-                        {ride.availableSeats} seats available
+                        {ride.availableSeats} places disponibles
                       </div>
                       {ride.notes && (
                         <div className="text-muted-foreground mt-2 text-xs italic">
@@ -130,10 +130,10 @@ const DashboardPage = () => {
               <Card className="col-span-2">
                 <CardContent className="pt-6 text-center">
                   <p className="text-muted-foreground mb-4">
-                    You don't have any upcoming rides.
+                    Vous n'avez aucun trajet à venir.
                   </p>
                   <Button asChild>
-                    <Link to="/rides/offer">Offer a Ride</Link>
+                    <Link to="/rides/offer">Proposer un trajet</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -148,19 +148,19 @@ const DashboardPage = () => {
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base font-medium">
                       {request.passengerId === user?.id
-                        ? `Your request to ${request.ride.driver.name}`
-                        : `Request from ${request.passenger.name}`}
+                        ? `Votre demande à ${request.ride.driver.name}`
+                        : `Demande de ${request.passenger.name}`}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-sm space-y-2">
                       <div className="flex items-center text-muted-foreground">
                         <MapPin className="h-4 w-4 mr-2" />
-                        {request.ride.startLocation} to {request.ride.endLocation}
+                        {request.ride.startLocation} vers {request.ride.endLocation}
                       </div>
                       <div className="flex items-center text-muted-foreground">
                         <Clock className="h-4 w-4 mr-2" />
-                        Departure at {request.ride.departureTime}
+                        Départ à {request.ride.departureTime}
                       </div>
                       <div>
                         <span className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
@@ -170,16 +170,18 @@ const DashboardPage = () => {
                             ? 'bg-destructive/20 text-destructive'
                             : 'bg-warning/20 text-warning'
                         }`}>
-                          {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
+                          {request.status === 'accepted' ? 'Acceptée'
+                            : request.status === 'rejected' ? 'Refusée'
+                            : 'En attente'}
                         </span>
                       </div>
                       {request.status === 'pending' && request.ride.driverId === user?.id && (
                         <div className="flex gap-2 mt-2">
                           <Button size="sm" variant="default" className="h-8">
-                            Accept
+                            Accepter
                           </Button>
                           <Button size="sm" variant="outline" className="h-8">
-                            Decline
+                            Refuser
                           </Button>
                         </div>
                       )}
@@ -191,10 +193,10 @@ const DashboardPage = () => {
               <Card className="col-span-2">
                 <CardContent className="pt-6 text-center">
                   <p className="text-muted-foreground mb-4">
-                    You don't have any ride requests.
+                    Vous n'avez aucune demande de trajet.
                   </p>
                   <Button asChild>
-                    <Link to="/rides/find">Find a Ride</Link>
+                    <Link to="/rides/find">Rechercher un trajet</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -205,12 +207,12 @@ const DashboardPage = () => {
 
       <div>
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Company Impact</h2>
+          <h2 className="text-xl font-semibold">Impact de l'entreprise</h2>
           {user?.role === 'admin' && (
             <Button variant="outline" size="sm" asChild>
               <Link to="/admin">
                 <BarChart3 className="mr-2 h-4 w-4" />
-                Full RSE Dashboard
+                Tableau RSE complet
               </Link>
             </Button>
           )}
@@ -220,15 +222,15 @@ const DashboardPage = () => {
           <div className="grid gap-6 md:grid-cols-3">
             <div className="flex flex-col">
               <span className="text-4xl font-bold text-primary">128</span>
-              <span className="text-sm text-muted-foreground">Shared rides this month</span>
+              <span className="text-sm text-muted-foreground">Trajets partagés ce mois</span>
             </div>
             <div className="flex flex-col">
               <span className="text-4xl font-bold text-primary">2,567 km</span>
-              <span className="text-sm text-muted-foreground">Distance shared</span>
+              <span className="text-sm text-muted-foreground">Distance partagée</span>
             </div>
             <div className="flex flex-col">
               <span className="text-4xl font-bold text-primary">385 kg</span>
-              <span className="text-sm text-muted-foreground">CO₂ emissions saved</span>
+              <span className="text-sm text-muted-foreground">CO₂ économisé</span>
             </div>
           </div>
         </div>

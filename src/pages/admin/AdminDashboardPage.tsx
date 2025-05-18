@@ -72,20 +72,20 @@ const AdminDashboardPage = () => {
 
   // Mock weekly data
   const weeklyData = [
-    { name: 'Mon', rides: 12, co2: 35 },
-    { name: 'Tue', rides: 19, co2: 42 },
-    { name: 'Wed', rides: 15, co2: 38 },
-    { name: 'Thu', rides: 21, co2: 52 },
-    { name: 'Fri', rides: 18, co2: 45 },
+    { name: 'Lun', rides: 12, co2: 35 },
+    { name: 'Mar', rides: 19, co2: 42 },
+    { name: 'Mer', rides: 15, co2: 38 },
+    { name: 'Jeu', rides: 21, co2: 52 },
+    { name: 'Ven', rides: 18, co2: 45 },
   ];
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">RSE Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Tableau RSE</h1>
           <p className="text-muted-foreground">
-            Track your organization's sustainability impact through carpooling
+            Suivez l'impact environnemental de votre organisation grâce au covoiturage
           </p>
         </div>
         <div className="flex gap-2">
@@ -94,18 +94,18 @@ const AdminDashboardPage = () => {
             onValueChange={setTimeRange}
           >
             <SelectTrigger className="w-[150px]">
-              <SelectValue placeholder="Select a time range" />
+              <SelectValue placeholder="Sélectionnez une période" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="week">This Week</SelectItem>
-              <SelectItem value="month">This Month</SelectItem>
-              <SelectItem value="quarter">This Quarter</SelectItem>
-              <SelectItem value="year">This Year</SelectItem>
+              <SelectItem value="week">Cette semaine</SelectItem>
+              <SelectItem value="month">Ce mois</SelectItem>
+              <SelectItem value="quarter">Ce trimestre</SelectItem>
+              <SelectItem value="year">Cette année</SelectItem>
             </SelectContent>
           </Select>
           <Button variant="outline">
             <Download className="h-4 w-4 mr-2" />
-            Export
+            Exporter
           </Button>
         </div>
       </div>
@@ -113,30 +113,30 @@ const AdminDashboardPage = () => {
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <StatCard
-          title="Total Rides"
+          title="Total des trajets"
           value={mockRideStats.totalRides}
-          description={timeRange === 'month' ? 'This month' : 'This period'}
+          description={timeRange === 'month' ? 'Ce mois-ci' : 'Cette période'}
           icon={<Car className="h-4 w-4" />}
           trend={{ value: 15, positive: true }}
         />
         <StatCard
-          title="Active Users"
+          title="Utilisateurs actifs"
           value={mockRideStats.activeUsers}
-          description={`${Math.round(mockRideStats.activeUsers / 120 * 100)}% of organization`}
+          description={`${Math.round(mockRideStats.activeUsers / 120 * 100)}% de l'organisation`}
           icon={<Users className="h-4 w-4" />}
           trend={{ value: 8, positive: true }}
         />
         <StatCard
-          title="Total Distance"
+          title="Distance totale"
           value={`${mockRideStats.totalKilometers} km`}
-          description="Shared rides"
+          description="Trajets partagés"
           icon={<ArrowUpRight className="h-4 w-4" />}
           trend={{ value: 12, positive: true }}
         />
         <StatCard
-          title="CO₂ Saved"
+          title="CO₂ économisé"
           value={`${mockRideStats.co2Saved} kg`}
-          description="Carbon emissions"
+          description="Émissions carbone"
           icon={<Leaf className="h-4 w-4" />}
           trend={{ value: 20, positive: true }}
         />
@@ -145,9 +145,9 @@ const AdminDashboardPage = () => {
       {/* Charts */}
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="departments">By Department</TabsTrigger>
-          <TabsTrigger value="weekly">Weekly Trends</TabsTrigger>
+          <TabsTrigger value="overview">Vue d'ensemble</TabsTrigger>
+          <TabsTrigger value="departments">Par département</TabsTrigger>
+          <TabsTrigger value="weekly">Tendances hebdomadaires</TabsTrigger>
         </TabsList>
         
         <TabsContent value="overview" className="space-y-4">
@@ -155,10 +155,10 @@ const AdminDashboardPage = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BarChart3 className="h-5 w-5 text-primary" />
-                Overall Impact
+                Impact global
               </CardTitle>
               <CardDescription>
-                Summary of sustainability metrics across the organization
+                Résumé des indicateurs de durabilité dans l'organisation
               </CardDescription>
             </CardHeader>
             <CardContent className="h-[400px] w-full">
@@ -183,9 +183,9 @@ const AdminDashboardPage = () => {
                     }} 
                   />
                   <Legend />
-                  <Bar dataKey="rides" name="Rides" fill="hsl(var(--chart-1))" />
-                  <Bar dataKey="users" name="Active Users" fill="hsl(var(--chart-2))" />
-                  <Bar dataKey="co2" name="CO₂ Saved (kg)" fill="hsl(var(--chart-3))" />
+                  <Bar dataKey="rides" name="Trajets" fill="hsl(var(--chart-1))" />
+                  <Bar dataKey="users" name="Utilisateurs actifs" fill="hsl(var(--chart-2))" />
+                  <Bar dataKey="co2" name="CO₂ économisé (kg)" fill="hsl(var(--chart-3))" />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
@@ -198,10 +198,10 @@ const AdminDashboardPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <PieChart className="h-5 w-5 text-primary" />
-                  CO₂ Savings by Department
+                  CO₂ économisé par département
                 </CardTitle>
                 <CardDescription>
-                  Distribution of carbon savings across departments
+                  Répartition des économies de carbone par département
                 </CardDescription>
               </CardHeader>
               <CardContent className="h-[300px]">
@@ -223,7 +223,7 @@ const AdminDashboardPage = () => {
                       ))}
                     </Pie>
                     <Tooltip 
-                      formatter={(value) => [`${value} kg CO₂`, 'Saved']}
+                      formatter={(value) => [`${value} kg CO₂`, 'Économisé']}
                       contentStyle={{ 
                         backgroundColor: 'hsl(var(--card))', 
                         borderColor: 'hsl(var(--border))',
@@ -237,19 +237,19 @@ const AdminDashboardPage = () => {
             
             <Card>
               <CardHeader>
-                <CardTitle>Department Performance</CardTitle>
+                <CardTitle>Performance par département</CardTitle>
                 <CardDescription>
-                  Detailed breakdown by department
+                  Détail par département
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Department</TableHead>
-                      <TableHead className="text-right">Rides</TableHead>
-                      <TableHead className="text-right">Users</TableHead>
-                      <TableHead className="text-right">CO₂ Saved</TableHead>
+                      <TableHead>Département</TableHead>
+                      <TableHead className="text-right">Trajets</TableHead>
+                      <TableHead className="text-right">Utilisateurs</TableHead>
+                      <TableHead className="text-right">CO₂ économisé</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -271,9 +271,9 @@ const AdminDashboardPage = () => {
         <TabsContent value="weekly" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Weekly Trends</CardTitle>
+              <CardTitle>Tendances hebdomadaires</CardTitle>
               <CardDescription>
-                Daily tracking of rides and CO₂ savings this week
+                Suivi quotidien des trajets et des économies de CO₂ cette semaine
               </CardDescription>
             </CardHeader>
             <CardContent className="h-[400px]">
@@ -299,8 +299,8 @@ const AdminDashboardPage = () => {
                     }} 
                   />
                   <Legend />
-                  <Bar yAxisId="left" dataKey="rides" name="Number of Rides" fill="hsl(var(--chart-1))" />
-                  <Bar yAxisId="right" dataKey="co2" name="CO₂ Saved (kg)" fill="hsl(var(--chart-3))" />
+                  <Bar yAxisId="left" dataKey="rides" name="Nombre de trajets" fill="hsl(var(--chart-1))" />
+                  <Bar yAxisId="right" dataKey="co2" name="CO₂ économisé (kg)" fill="hsl(var(--chart-3))" />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
@@ -311,64 +311,64 @@ const AdminDashboardPage = () => {
       {/* RSE Report Summary */}
       <Card>
         <CardHeader>
-          <CardTitle>RSE Impact Report</CardTitle>
+          <CardTitle>Rapport d'impact RSE</CardTitle>
           <CardDescription>
-            Summary of your organization's environmental contribution
+            Résumé de la contribution environnementale de votre organisation
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-muted/40 p-4 rounded-lg">
-                <h3 className="font-medium mb-2">Environmental Impact</h3>
+                <h3 className="font-medium mb-2">Impact environnemental</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">CO₂ Emissions Saved:</span>
+                    <span className="text-muted-foreground">CO₂ économisé :</span>
                     <span className="font-medium">{mockRideStats.co2Saved} kg</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Fuel Saved:</span>
-                    <span className="font-medium">{Math.round(mockRideStats.totalKilometers * 0.07)} liters</span>
+                    <span className="text-muted-foreground">Carburant économisé :</span>
+                    <span className="font-medium">{Math.round(mockRideStats.totalKilometers * 0.07)} litres</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Trees Equivalent:</span>
-                    <span className="font-medium">{Math.round(mockRideStats.co2Saved / 20)} trees</span>
+                    <span className="text-muted-foreground">Équivalent arbres :</span>
+                    <span className="font-medium">{Math.round(mockRideStats.co2Saved / 20)} arbres</span>
                   </li>
                 </ul>
               </div>
               
               <div className="bg-muted/40 p-4 rounded-lg">
-                <h3 className="font-medium mb-2">Social Impact</h3>
+                <h3 className="font-medium mb-2">Impact social</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Active Participants:</span>
-                    <span className="font-medium">{mockRideStats.activeUsers} employees</span>
+                    <span className="text-muted-foreground">Participants actifs :</span>
+                    <span className="font-medium">{mockRideStats.activeUsers} employés</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Participation Rate:</span>
+                    <span className="text-muted-foreground">Taux de participation :</span>
                     <span className="font-medium">{Math.round(mockRideStats.activeUsers / 120 * 100)}%</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Connections Made:</span>
+                    <span className="text-muted-foreground">Connexions créées :</span>
                     <span className="font-medium">{Math.round(mockRideStats.totalRides * 1.8)}</span>
                   </li>
                 </ul>
               </div>
               
               <div className="bg-muted/40 p-4 rounded-lg">
-                <h3 className="font-medium mb-2">Economic Impact</h3>
+                <h3 className="font-medium mb-2">Impact économique</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Money Saved:</span>
-                    <span className="font-medium">~${Math.round(mockRideStats.totalKilometers * 0.15)}</span>
+                    <span className="text-muted-foreground">Économies réalisées :</span>
+                    <span className="font-medium">~{Math.round(mockRideStats.totalKilometers * 0.15)}€</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Parking Space Saved:</span>
-                    <span className="font-medium">{Math.round(mockRideStats.totalRides * 0.4)} spaces</span>
+                    <span className="text-muted-foreground">Places de parking économisées :</span>
+                    <span className="font-medium">{Math.round(mockRideStats.totalRides * 0.4)} places</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-muted-foreground">Avg. Savings/User:</span>
-                    <span className="font-medium">${Math.round((mockRideStats.totalKilometers * 0.15) / mockRideStats.activeUsers)}/month</span>
+                    <span className="text-muted-foreground">Économie moy./utilisateur :</span>
+                    <span className="font-medium">{Math.round((mockRideStats.totalKilometers * 0.15) / mockRideStats.activeUsers)}€/mois</span>
                   </li>
                 </ul>
               </div>
@@ -377,7 +377,7 @@ const AdminDashboardPage = () => {
             <div className="flex justify-end">
               <Button>
                 <Download className="mr-2 h-4 w-4" />
-                Download Full Report
+                Télécharger le rapport complet
               </Button>
             </div>
           </div>

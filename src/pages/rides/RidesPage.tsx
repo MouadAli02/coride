@@ -6,7 +6,7 @@ export default function RidesPage() {
   return (
     <div className="container mx-auto py-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">Available Rides</h1>
+        <h1 className="text-3xl font-bold">Trajets disponibles</h1>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -21,17 +21,17 @@ export default function RidesPage() {
             <CardContent>
               <div className="space-y-2">
                 <p className="text-sm text-muted-foreground">
-                  Driver: {ride.driver.name}
+                  Conducteur : {ride.driver.name}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Departure: {ride.departureTime}
+                  Départ : {ride.departureTime}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Available Seats: {ride.availableSeats}
+                  Places disponibles : {ride.availableSeats}
                 </p>
                 {ride.notes && (
                   <p className="text-sm text-muted-foreground">
-                    Notes: {ride.notes}
+                    Notes : {ride.notes}
                   </p>
                 )}
                 <div className="flex items-center gap-2 mt-2">
@@ -40,12 +40,16 @@ export default function RidesPage() {
                       key={day}
                       className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs capitalize"
                     >
-                      {day}
+                      {day === 'monday' ? 'Lun' :
+                       day === 'tuesday' ? 'Mar' :
+                       day === 'wednesday' ? 'Mer' :
+                       day === 'thursday' ? 'Jeu' :
+                       day === 'friday' ? 'Ven' : day}
                     </span>
                   ))}
                   {ride.recurrence === 'oneTime' && (
                     <span className="px-2 py-1 bg-primary/10 text-primary rounded-md text-xs">
-                      One-time ride
+                      Trajet unique
                     </span>
                   )}
                 </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bell, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/sharemob.png';
 import {
   Sheet,
   SheetContent,
@@ -25,7 +26,7 @@ const Navbar = () => {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
+                <span className="sr-only">Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0">
@@ -35,9 +36,11 @@ const Navbar = () => {
 
           <Link to="/" className="flex items-center gap-2">
             <div className="font-bold text-xl flex items-center">
-              <span className="text-primary">Co</span>
-              <span>Ride</span>
-              <div className="w-12 h-1 bg-primary/20 rounded-full ml-1" />
+              <img 
+                src={logo} 
+                alt="Logo CoRide" 
+                className="h-30 w-8 w-auto object-contain pr-[57rem]" 
+              />
             </div>
           </Link>
         </div>

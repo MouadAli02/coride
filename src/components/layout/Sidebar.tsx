@@ -24,7 +24,7 @@ const NavItem = ({ href, label, icon, isActive }: NavItemProps) => (
     variant={isActive ? "secondary" : "ghost"}
     className={cn(
       "w-full justify-start gap-2",
-      isActive && "bg-secondary font-medium"
+      isActive && "bg-blue-100 text-blue-700 font-medium"
     )}
     asChild
   >
@@ -45,18 +45,18 @@ const Sidebar = () => {
       <div className="flex flex-col flex-1 gap-2 p-4">
         <div className="py-2">
           <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-            Main
+            Principal
           </h2>
           <div className="space-y-1">
             <NavItem
               href="/"
-              label="Dashboard"
+              label="Tableau de bord"
               icon={<Home className="h-5 w-5" />}
               isActive={pathname === '/'}
             />
             <NavItem
               href="/rides"
-              label="My Rides"
+              label="Mes trajets"
               icon={<Car className="h-5 w-5" />}
               isActive={pathname.startsWith('/rides') && 
                 !pathname.includes('/offer') && 
@@ -64,13 +64,13 @@ const Sidebar = () => {
             />
             <NavItem
               href="/rides/offer"
-              label="Offer Ride"
+              label="Proposer un trajet"
               icon={<PlusCircle className="h-5 w-5" />}
               isActive={pathname === '/rides/offer'}
             />
             <NavItem
               href="/rides/find"
-              label="Find Ride"
+              label="Rechercher un trajet"
               icon={<Search className="h-5 w-5" />}
               isActive={pathname === '/rides/find'}
             />
@@ -82,9 +82,14 @@ const Sidebar = () => {
             />
             <NavItem
               href="/profile"
-              label="Profile"
+              label="Profil"
               icon={<User className="h-5 w-5" />}
               isActive={pathname === '/profile'}
+            />                   <NavItem
+              href="/chatbot"
+              label="Ask Coride"
+              icon={<MessageSquare className="h-5 w-5" />}
+              isActive={pathname === '/chatbot'}
             />
           </div>
         </div>
@@ -92,30 +97,48 @@ const Sidebar = () => {
         {user?.role === 'admin' && (
           <div className="py-2">
             <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-              Admin
+              Administration
             </h2>
             <div className="space-y-1">
               <NavItem
                 href="/admin"
-                label="RSE Dashboard"
+                label="Tableau RSE"
                 icon={<BarChart3 className="h-5 w-5" />}
                 isActive={pathname === '/admin'}
               />
             </div>
           </div>
         )}
-      </div>
 
-      <div className="mt-auto p-4">
-        <div className="rounded-lg bg-primary/10 p-3">
-          <h3 className="font-medium text-sm">Reduce Your Carbon Footprint</h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            Share rides with colleagues and help your organization meet sustainability goals.
-          </p>
+        <div className="mt-auto p-4">
+          <div className="rounded-lg bg-primary/10 p-3">
+            <h3 className="font-medium text-sm">Réduisez votre empreinte carbone</h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              Partagez vos trajets avec vos collègues et aidez votre organisation à atteindre ses objectifs de développement durable.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+const MobileSidebar = ({ onNavigate }: { onNavigate: () => void }) => {
+  return (
+    <div className="flex h-full flex-col py-4">
+      <div className="px-4 py-2">
+        <h2 className="text-lg font-semibold">Menu principal</h2>
+      </div>
+      <div className="mt-auto p-4">
+        <div className="rounded-lg bg-primary/10 p-3">
+          <h3 className="font-medium text-sm">Réduisez votre impact</h3>
+          <p className="text-xs text-muted-foreground mt-1">
+            Partagez vos trajets et contribuez au développement durable.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default Sidebar;

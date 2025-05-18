@@ -19,10 +19,10 @@ import {
 import { useAuth } from '@/providers/AuthProvider';
 
 const registerSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
-  location: z.string().min(2, 'Location must be at least 2 characters'),
+  name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères'),
+  email: z.string().email('Veuillez saisir une adresse e-mail valide'),
+  password: z.string().min(6, 'Le mot de passe doit contenir au moins 6 caractères'),
+  location: z.string().min(2, 'La localisation doit contenir au moins 2 caractères'),
 });
 
 type RegisterFormValues = z.infer<typeof registerSchema>;
@@ -46,10 +46,10 @@ const RegisterPage = () => {
     setIsLoading(true);
     try {
       await registerUser(data.email, data.name, data.password, data.location);
-      toast.success('Account created successfully');
+      toast.success('Compte créé avec succès');
       navigate('/');
     } catch (error: any) {
-      toast.error(error.message || 'Registration failed');
+      toast.error(error.message || 'Échec de l\'inscription');
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -69,16 +69,16 @@ const RegisterPage = () => {
             <span className="text-primary">Co</span>Ride
           </CardTitle>
           <CardDescription>
-            Create an account to start sharing rides
+            Créez un compte pour commencer à partager vos trajets
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name">Nom complet</Label>
               <Input
                 id="name"
-                placeholder="John Doe"
+                placeholder="Jean Dupont"
                 {...register('name')}
                 autoComplete="name"
               />
@@ -87,11 +87,11 @@ const RegisterPage = () => {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder="votre@email.com"
                 {...register('email')}
                 autoComplete="email"
               />
@@ -100,7 +100,7 @@ const RegisterPage = () => {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Mot de passe</Label>
               <Input
                 id="password"
                 type="password"
@@ -113,10 +113,10 @@ const RegisterPage = () => {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="location">Your Location (District/Area)</Label>
+              <Label htmlFor="location">Votre localisation (Quartier/Zone)</Label>
               <Input
                 id="location"
-                placeholder="e.g., Sidi Maarouf"
+                placeholder="ex: Sidi Maarouf"
                 {...register('location')}
               />
               {errors.location && (
@@ -130,12 +130,12 @@ const RegisterPage = () => {
               className="w-full" 
               disabled={isLoading}
             >
-              {isLoading ? 'Creating Account...' : 'Create Account'}
+              {isLoading ? 'Création du compte...' : 'Créer un compte'}
             </Button>
             <div className="text-center text-sm">
-              Already have an account?{' '}
+              Vous avez déjà un compte ?{' '}
               <Link to="/login" className="text-primary hover:underline">
-                Sign in
+                Se connecter
               </Link>
             </div>
           </CardFooter>

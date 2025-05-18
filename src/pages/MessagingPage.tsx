@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -28,7 +27,7 @@ export default function MessagingPage() {
                     </Avatar>
                     <div className="flex-1 space-y-1">
                       <p className="font-medium">Contact {contact}</p>
-                      <p className="text-sm text-muted-foreground">Last message...</p>
+                      <p className="text-sm text-muted-foreground">Dernier message...</p>
                     </div>
                   </div>
                 ))}
@@ -44,7 +43,7 @@ export default function MessagingPage() {
               <Avatar>
                 <UserCircle className="h-10 w-10" />
               </Avatar>
-              <CardTitle>Contact Name</CardTitle>
+              <CardTitle>Nom du contact</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -64,8 +63,8 @@ export default function MessagingPage() {
                           : 'bg-muted'
                       }`}
                     >
-                      <p>This is a sample message content.</p>
-                      <p className="text-xs mt-1 opacity-70">12:34 PM</p>
+                      <p>Ceci est un exemple de message.</p>
+                      <p className="text-xs mt-1 opacity-70">12:34</p>
                     </div>
                   </div>
                 ))}
@@ -74,7 +73,7 @@ export default function MessagingPage() {
             
             <div className="flex items-center space-x-2">
               <Input
-                placeholder="Type your message..."
+                placeholder="Tapez votre message..."
                 className="flex-1"
               />
               <Button size="icon">
