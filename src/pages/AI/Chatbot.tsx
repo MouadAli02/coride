@@ -2,7 +2,7 @@ const Chatbot = () => {
   return (
     <div className="w-full h-[calc(100vh-4rem)]">
       <iframe
-        src="http://localhost:8501"
+        src={process.env.VITE_STREAMLIT_URL || "http://localhost:8501"}
         width="100%"
         height="100%"
         style={{
