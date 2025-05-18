@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import logo from '@/assets/sharemob.png';
 import {
   Card,
   CardContent,
@@ -17,6 +18,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useAuth } from '@/providers/AuthProvider';
+
 
 const registerSchema = z.object({
   name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères'),
@@ -60,14 +62,13 @@ const RegisterPage = () => {
     <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
-          <div className="flex justify-center mb-2">
-            <div className="bg-primary h-12 w-12 rounded-full flex items-center justify-center">
-              <Car className="h-6 w-6 text-primary-foreground" />
-            </div>
-          </div>
-          <CardTitle className="text-2xl">
-            <span className="text-primary">Co</span>Ride
-          </CardTitle>
+   <CardTitle className="text-2xl flex justify-center items-center">
+    <img 
+      src={logo} 
+      alt="Logo CoRide" 
+      className="h-auto  w-auto object-contain"
+    />
+  </CardTitle>
           <CardDescription>
             Créez un compte pour commencer à partager vos trajets
           </CardDescription>

@@ -14,6 +14,7 @@ import {  Card,
   CardHeader,
 } from '@/components/ui/card';
 import { useAuth } from '@/providers/AuthProvider';
+import logo from '@/assets/sharemob.png';
 
 const loginSchema = z.object({
   email: z.string().email('Veuillez saisir une adresse e-mail valide'),
@@ -69,9 +70,11 @@ const LoginPage = () => {
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-2">
             <div className="font-bold text-3xl flex items-center">
-              <span className="text-primary">Co</span>
-              <span>Ride</span>
-              <div className="w-16 h-1 bg-primary/20 rounded-full ml-1" />
+       <img 
+                src={logo} 
+                alt="Logo CoRide" 
+                className="h-auto w-8 w-auto object-" 
+              />
             </div>
           </div>
           <CardDescription>
