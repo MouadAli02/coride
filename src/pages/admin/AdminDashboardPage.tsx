@@ -360,7 +360,7 @@ const AdminDashboardPage = () => {
                 <ul className="space-y-2 text-sm">
                   <li className="flex justify-between">
                     <span className="text-muted-foreground">Économies réalisées :</span>
-                    <span className="font-medium">~{Math.round(mockRideStats.totalKilometers * 0.15)}€</span>
+                    <span className="font-medium">~{Math.round(mockRideStats.totalKilometers * 0.15)}€Dh</span>
                   </li>
                   <li className="flex justify-between">
                     <span className="text-muted-foreground">Places de parking économisées :</span>
@@ -368,7 +368,7 @@ const AdminDashboardPage = () => {
                   </li>
                   <li className="flex justify-between">
                     <span className="text-muted-foreground">Économie moy./utilisateur :</span>
-                    <span className="font-medium">{Math.round((mockRideStats.totalKilometers * 0.15) / mockRideStats.activeUsers)}€/mois</span>
+                    <span className="font-medium">{Math.round((mockRideStats.totalKilometers * 0.15) / mockRideStats.activeUsers)}Dh/mois</span>
                   </li>
                 </ul>
               </div>
